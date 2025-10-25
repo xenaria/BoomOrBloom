@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public void IncreaseScore(int increment)
     {
         score += increment;
+        Debug.Log($"New score: {score}");
         SetScore(score);
     }
 

@@ -4,37 +4,37 @@ public class ItemSpawner : MonoBehaviour
 {
     [Header("Spawn Area")]
     public float areaSize = 10f;
+    public Transform startLimit;
+    public Transform endLimit;
 
-    [Header("Platforms")]
-    public GameObject platformPrefab;
-    public int platformCount = 20;
-
-    [Header("Tokens")]
-    public GameObject tokenPrefab;
-    public int tokenCount = 5;
-
-    [Header("Bombs")]
+    [Header("Booms")]
     public GameObject bombPrefab;
-    public int bombCount = 3;
+    public int bombCount =8;
+
+    [Header("Blooms")]
+    public GameObject cherryPrefab;
+    public int cherryCount = 15;
 
     private GameObject[] spawnedObjects;
+
+    void Start()
+    {
+        SpawnLevel();
+    }
 
     public void SpawnLevel()
     {
         ClearLevel();
 
-        int totalObjects = platformCount + tokenCount + bombCount;
+        int totalObjects =+ cherryCount + bombCount;
         spawnedObjects = new GameObject[totalObjects];
 
         int index = 0;
 
-        // Spawn platforms
-        for (int i = 0; i < platformCount; i++)
-            spawnedObjects[index++] = SpawnObject(platformPrefab);
 
         // Spawn tokens
-        for (int i = 0; i < tokenCount; i++)
-            spawnedObjects[index++] = SpawnObject(tokenPrefab);
+        for (int i = 0; i < cherryCount; i++)
+            spawnedObjects[index++] = SpawnObject(cherryPrefab);
 
         // Spawn bombs
         for (int i = 0; i < bombCount; i++)

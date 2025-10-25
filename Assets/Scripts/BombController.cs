@@ -23,7 +23,6 @@ public class BombController : MonoBehaviour
     void Awake()
     {
         sfx = GetComponent<AudioSource>();
-        if (!bombSprite) bombSprite = GetComponentInChildren<SpriteRenderer>();
         if (bombSprite) bombSprite.enabled = false;
     }
 
