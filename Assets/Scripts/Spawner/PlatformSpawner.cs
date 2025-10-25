@@ -14,12 +14,9 @@ public class PlatformSpawner : MonoBehaviour
     public float gridSize = 0.1f;  
     [SerializeField] private int maxAttempts = 5000;
 
-    [Header("Min Gaps (unused now)")]
-    public float minHorizontalGap = 1f;
-    public float minVerticalGap = 1f;
-
-    [Header("Packing")]
-    public float touchMargin = 0.05f;
+    [Header("Platform Spacing")]
+    public float minHorizontalGap = 2f;
+    public float minVerticalGap = 2f; 
 
     private readonly List<Rect> placedRects = new List<Rect>();
     public LayerMask platformLayer;
@@ -65,13 +62,12 @@ public class PlatformSpawner : MonoBehaviour
 
             if (!IsValid(cand)) continue;
 
-            Vector2 physSize = size - new Vector2(touchMargin, touchMargin);
+            Vector2 physSize = size - new Vector2(0.05f, 0.05f);
             if (Physics2D.OverlapBox(center, physSize, 0f, platformLayer) != null) continue;
+            
             Instantiate(prefabToUse, new Vector3(center.x, center.y, 0f), Quaternion.identity);
-           
             placedRects.Add(cand);
             return;
-       
         }
     }
 
@@ -80,20 +76,34 @@ public class PlatformSpawner : MonoBehaviour
         return new Rect(center - size * 0.5f, size);
     }
 
-    // CHANGED: only reject when rectangles overlap (with optional margin)
+    
     bool IsValid(Rect cand)
     {
         for (int i = 0; i < placedRects.Count; i++)
-            if (RectsOverlap(cand, placedRects[i], touchMargin))
+        {
+            Rect placed = placedRects[i];
+            
+            // Check horizontal gap
+            float horizontalGap = Mathf.Max(
+                cand.xMin - placed.xMax,
+                placed.xMin - cand.xMax
+            );
+            
+            // Check vertical gap
+            float verticalGap = Mathf.Max(
+                cand.yMin - placed.yMax,
+                placed.yMin - cand.yMax
+            );
+            
+            // If overlapping or gap is too small, reject
+            if (horizontalGap < minHorizontalGap && verticalGap < minVerticalGap)
                 return false;
+        }
         return true;
     }
-
-    bool RectsOverlap(Rect a, Rect b, float margin)
+    
+    public List<Rect> GetPlatformBounds()
     {
-        return (a.xMin < b.xMax - margin) &&
-               (a.xMax > b.xMin + margin) &&
-               (a.yMin < b.yMax - margin) &&
-               (a.yMax > b.yMin + margin);
+        return new List<Rect>(placedRects);
     }
 }

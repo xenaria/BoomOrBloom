@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10;
-    public float upSpeed = 6.5f;
+    public float upSpeed = 10f;
     public float maxUpSpeed = 200;
     public Transform gameCamera;
 
@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private bool faceRightState = true;
     private bool onGroundState = true;
     private bool jumpedState = false;
+    private int jumpCount = 0;
+    [SerializeField] private int maxJumps = 2;
 
     private bool moving = false;
     private bool alive = true;
@@ -107,19 +109,20 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
-        if (alive && onGroundState)
+        if (!alive) return;
+
+        if (jumpCount < maxJumps) // to allow double jumps
         {
+            playerBody.linearVelocity = new Vector2(playerBody.linearVelocityX, 0f); // reset vertical velocity for consistent jumps
             playerBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
 
-            // Clamp vertical velocity
-            if (playerBody.linearVelocityX > maxUpSpeed)
+            if (playerBody.linearVelocityY > maxUpSpeed)
                 playerBody.linearVelocity = new Vector2(playerBody.linearVelocityX, maxUpSpeed);
 
-            onGroundState = false;
+            jumpCount++;
             jumpedState = true;
-            Debug.Log("i jumped");
 
-            //_animator.SetBool("onGround", onGroundState);
+            Debug.Log("i jumped " + jumpCount + " time(s)");
         }
     }
 
@@ -136,7 +139,17 @@ public class PlayerController : MonoBehaviour
     // Check if onGround
     public void IsGrounded()
     {
-        onGroundState = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        bool groundedNow = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        
+        if (groundedNow)
+        {
+            onGroundState = true;
+            jumpCount = 0; // reset double jump
+        }
+        else
+        {
+            onGroundState = false;
+        }
         //_animator.SetBool("onGround", onGroundState);
     }
 
