@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4c792a233de764597b6ad2f5097bab, type: 3}
   m_Name: LevelData
   m_EditorClassIdentifier: 
+  gameMode: 1
   totalBlooms: 10
   totalBombs: 10
   totalPlatforms: 20

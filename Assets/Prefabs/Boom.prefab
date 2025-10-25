@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4630aad5bcb5ac40a6f1448304abb7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelData: {fileID: 11400000, guid: 911b79d99bca2984d905fb7f29075360, type: 2}
   fuseTime: 1
   explosionRadius: 4
   playerLayer:

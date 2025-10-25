@@ -139,12 +139,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a3cbdc8946c89469fdb6b87fa38c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
+  onCollected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+  levelData: {fileID: 11400000, guid: 911b79d99bca2984d905fb7f29075360, type: 2}
   bloomSfx: {fileID: 8300000, guid: 296e3f13cd5d75f4988cf8830e077ce0, type: 3}
-  bloomSprite: {fileID: 0}
+  bloomSprite: {fileID: 4374101017035437331}
   bloomVfx: {fileID: 5754375633414059660, guid: 0185500e6c941264a93a824fd15c41bf, type: 3}
 --- !u!82 &9031277564658952174
 AudioSource:

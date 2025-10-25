@@ -19,7 +19,7 @@ public class ItemSpawner : MonoBehaviour
     public GameObject bloomPrefab;
 
     [Header("Spawn Settings")]
-    public float itemSpacing = 0.8f;  // Minimum distance between items
+    public float itemSpacing = 1f;  // Minimum distance between items
     public float minVerticalClearance = 1.5f; // Minimum space above spawn point
     public int maxSpawnAttempts = 100;
 

@@ -1879,7 +1879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5894f4a59f3e0f14fac10c32f2aade86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 262894175}
+  gameManager: {fileID: 6205811972591809615}
 --- !u!1 &214607812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,17 +1911,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1998078838}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &262894175 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-  m_PrefabInstance: {fileID: 8436779719606799313}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7231dfbdaee16945b929a0919182341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &509626176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2571,7 +2560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5894f4a59f3e0f14fac10c32f2aade86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 262894175}
+  gameManager: {fileID: 6205811972591809615}
 --- !u!114 &713526012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3725,7 +3714,7 @@ MonoBehaviour:
   restartButton: {fileID: 1987995934}
   gameOverScreen: {fileID: 1393666409}
   gameWinScreen: {fileID: 623389337}
-  gameManager: {fileID: 262894175}
+  gameManager: {fileID: 6205811972591809615}
 --- !u!1 &1449695778
 GameObject:
   m_ObjectHideFlags: 0
@@ -4049,7 +4038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5894f4a59f3e0f14fac10c32f2aade86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 262894175}
+  gameManager: {fileID: 6205811972591809615}
 --- !u!1 &1998078837
 GameObject:
   m_ObjectHideFlags: 0
@@ -4487,7 +4476,7 @@ MonoBehaviour:
     m_Bits: 320
   _animator: {fileID: 0}
   maxJumps: 2
-  gameManager: {fileID: 262894175}
+  gameManager: {fileID: 6205811972591809615}
 --- !u!114 &2136208029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4567,347 +4556,172 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1001 &8436779719606799313
-PrefabInstance:
+--- !u!114 &6205811972591809615
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 385100633290469006, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 933956432848595617, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.704127
-      objectReference: {fileID: 0}
-    - target: {fileID: 933956432848595617, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.9988899
-      objectReference: {fileID: 0}
-    - target: {fileID: 933956432848595617, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.052656412
-      objectReference: {fileID: 0}
-    - target: {fileID: 933956432848595617, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 933956432848595617, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 933956432848595617, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 933956432848595617, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 933956432848595617, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 933956432848595617, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 933956432848595617, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameScore
-      value: 
-      objectReference: {fileID: 11400000, guid: 15afb4fe7fcefb14388004f65059e1cd, type: 2}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: levelData
-      value: 
-      objectReference: {fileID: 11400000, guid: 911b79d99bca2984d905fb7f29075360, type: 2}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameWin.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: scoreChange.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameWin.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameWin.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1427158701}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1427158701}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1427158701}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 860338462}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 860338463}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: scoreChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameWin.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2136208028}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1427158701}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 860338462}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[3].m_Target
-      value: 
-      objectReference: {fileID: 860338463}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameWin.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GameWin
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: scoreChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1427158701}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: scoreChange.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1427158701}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GameOver
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GameStart
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SpawnNewPlatforms
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: SpawnNewLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: scoreChange.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GameRestart
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: GameStart
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: SpawnNewPlatforms
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: SpawnNewLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: scoreChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetScore
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: scoreChange.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetScore
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameWin.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: HUDManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: HUDManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: HUDManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: PlatformSpawner, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: ItemSpawner, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: HUDManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: PlatformSpawner, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: ItemSpawner, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: scoreChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: HUDManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: scoreChange.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: HUDManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameWin.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameStart.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: gameRestart.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: scoreChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2524847512696749982, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
-      propertyPath: scoreChange.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e2659c6df5cb66b4896111cc2c01bc3b, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8092212651195393375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7231dfbdaee16945b929a0919182341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1427158701}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: GameStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 860338462}
+        m_TargetAssemblyTypeName: PlatformSpawner, Assembly-CSharp
+        m_MethodName: SpawnNewPlatforms
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 860338463}
+        m_TargetAssemblyTypeName: ItemSpawner, Assembly-CSharp
+        m_MethodName: SpawnNewLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameRestart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2136208028}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1427158701}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: GameStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 860338462}
+        m_TargetAssemblyTypeName: PlatformSpawner, Assembly-CSharp
+        m_MethodName: SpawnNewPlatforms
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 860338463}
+        m_TargetAssemblyTypeName: ItemSpawner, Assembly-CSharp
+        m_MethodName: SpawnNewLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  scoreChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1427158701}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: SetScore
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameWin:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1427158701}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: GameWin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameOver:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1427158701}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: GameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameScore: {fileID: 11400000, guid: 15afb4fe7fcefb14388004f65059e1cd, type: 2}
+  levelData: {fileID: 11400000, guid: 911b79d99bca2984d905fb7f29075360, type: 2}
+--- !u!1 &8092212651195393375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8782971558298886512}
+  - component: {fileID: 6205811972591809615}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1001 &8753801031177939902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4965,6 +4779,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26c107756e49dee4cac06b127157d40b, type: 3}
+--- !u!4 &8782971558298886512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8092212651195393375}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.704127, y: 0.9988899, z: 0.052656412}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4977,7 +4806,7 @@ SceneRoots:
   - {fileID: 1998078838}
   - {fileID: 8753801031177939902}
   - {fileID: 860338461}
-  - {fileID: 8436779719606799313}
+  - {fileID: 8782971558298886512}
   - {fileID: 859834507}
   - {fileID: 1427158700}
   - {fileID: 1294432905}

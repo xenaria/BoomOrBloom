@@ -17,9 +17,16 @@ public class GameManager : MonoBehaviour
 
     bool IsNewSession = true;
     private int score = 0;
+    
+    public static GameManager Instance { get; private set; }
 
     public void Awake()
     {
+
+        // SINGLETON :(
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject); 
+
         if (IsNewSession)
         {
             IsNewSession = false;
@@ -67,6 +74,7 @@ public class GameManager : MonoBehaviour
         gameWin?.Invoke();
         // Add win UI, stop player movement, etc.
     }
+    
     // public void IncreaseScore(int inc)
     // {
     //     SetScore(score + inc);

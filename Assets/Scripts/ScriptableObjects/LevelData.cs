@@ -3,6 +3,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LevelData", menuName = "ScriptableObjects/LevelData")]
 public class LevelData : ScriptableObject
 {
+    public enum GameMode
+    {
+        Normal,
+        Twist
+    }
+
+    [Header("Game Mode")]
+    public GameMode gameMode = GameMode.Normal;
+    
     [Header("Item Counts")]
     public int totalBlooms = 10;
     public int totalBombs = 10;

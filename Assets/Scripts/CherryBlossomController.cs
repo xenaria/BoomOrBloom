@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CherryBlossomController : MonoBehaviour
 {
-
     public LayerMask playerLayer;
     public LevelData levelData;
 
@@ -23,12 +23,25 @@ public class CherryBlossomController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if ((playerLayer.value & (1 << other.gameObject.layer)) == 0) return; 
-        
-        PlayerController player = other.GetComponent<PlayerController>();
-        if (player != null)
+        if ((playerLayer.value & (1 << other.gameObject.layer)) == 0) return;
+
+        // check if normal mode!! (else twist HEHEHE)
+        if (levelData.gameMode == LevelData.GameMode.Normal)
         {
-            player.gameManager.OnBloomCollected();
+            PlayerController player = other.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                GameManager.Instance.OnBloomCollected();
+                StartCoroutine(Bloom());
+            }
+        }
+    }
+    
+    public void CollectWithTwist()
+    {
+        if (bloomSprite.enabled)
+        {
+            GameManager.Instance.OnBloomCollected(); 
             StartCoroutine(Bloom());
         }
     }
