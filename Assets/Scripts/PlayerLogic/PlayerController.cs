@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     private bool moving = false;
     private bool alive = true;
+    private bool isDead = false;
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -138,7 +140,7 @@ public class PlayerController : MonoBehaviour
     public void IsGrounded()
     {
         bool groundedNow = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-        
+
         if (groundedNow)
         {
             onGroundState = true;
@@ -151,12 +153,21 @@ public class PlayerController : MonoBehaviour
         //_animator.SetBool("onGround", onGroundState);
     }
 
+    public bool IsAlive()
+    {
+        return alive;
+    }
+    
+    public void DisableMovement()
+    {
+        alive = false;
+        movement = Vector2.zero;
+    }
+
     public void Kill()
     {
         Debug.Log("Player has died..");
-        alive = false;
-
-        Time.timeScale = 0.0f;
+        gameManager.GameOver();
     }
 
     public void GameRestart()
@@ -170,6 +181,6 @@ public class PlayerController : MonoBehaviour
         onGroundState = true;
         alive = true;
         
-        GameManager.instance.ResetScore();
+        gameManager.ResetScore();
     }
 }

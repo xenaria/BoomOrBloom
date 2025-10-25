@@ -5,6 +5,7 @@ public class CherryBlossomController : MonoBehaviour
 {
 
     public LayerMask playerLayer;
+    public LevelData levelData;
 
     [Header("SFX")]
     public AudioClip bloomSfx;
@@ -13,7 +14,6 @@ public class CherryBlossomController : MonoBehaviour
     [Header("Refs")]
     public SpriteRenderer bloomSprite;
     public GameObject bloomVfx;
-
     void Awake()
     {
         sfx = GetComponent<AudioSource>();
@@ -23,26 +23,30 @@ public class CherryBlossomController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if ((playerLayer.value & (1 << other.gameObject.layer)) == 0) return;
-        StartCoroutine(Bloom());
+        if ((playerLayer.value & (1 << other.gameObject.layer)) == 0) return; 
+        
+        PlayerController player = other.GetComponent<PlayerController>();
+        if (player != null)
+        {
+            player.gameManager.OnBloomCollected();
+            StartCoroutine(Bloom());
+        }
     }
     
     IEnumerator Bloom()
     {
-        GameManager.instance.IncreaseScore(1);
-        Debug.Log($"Score: {GameManager.instance.gameScore}");
         bloomSprite.enabled = false;
+        GetComponent<Collider2D>().enabled = false;
 
         if (bloomVfx)
             Instantiate(bloomVfx, transform.position, Quaternion.identity);
         
+        if (bloomSfx && sfx)
         sfx.PlayOneShot(bloomSfx);
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
 
-        // wait for the clip to finish
-        yield return new WaitForSeconds(bloomSfx.length);
-        Destroy(gameObject, 0.2f);
+        yield return new WaitForSeconds(bloomSfx ? bloomSfx.length : 0.5f);
+
+        Destroy(gameObject, 1f);
     }
 
 

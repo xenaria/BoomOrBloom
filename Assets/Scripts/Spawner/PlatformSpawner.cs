@@ -3,26 +3,28 @@ using System.Collections.Generic;
 
 public class PlatformSpawner : MonoBehaviour
 {
+    public LevelData levelData;
+    int numberOfPlatforms => levelData.totalPlatforms;
+    float gridSize => levelData.platformGridSize;
+    float minHorizontalGap => levelData.minHorizontalGap;
+    float minVerticalGap => levelData.minVerticalGap;
+
     [Header("Platform Prefabs")]
     public GameObject rectanglePrefab;
     public GameObject squarePrefab;
 
     [Header("Spawn Settings")]
-    public int numberOfPlatforms = 20;
     public Transform startLimit;
     public Transform endLimit;
-    public float gridSize = 0.1f;  
-    [SerializeField] private int maxAttempts = 5000;
 
-    [Header("Platform Spacing")]
-    public float minHorizontalGap = 2f;
-    public float minVerticalGap = 2f; 
+    [SerializeField] private int maxAttempts = 5000;
 
     private readonly List<Rect> placedRects = new List<Rect>();
     public LayerMask platformLayer;
 
-    void Start()
+    public void SpawnNewPlatforms()
     {
+        ClearPlatforms();
         for (int i = 0; i < numberOfPlatforms; i++)
             TrySpawnOne();
     }
@@ -65,7 +67,7 @@ public class PlatformSpawner : MonoBehaviour
             Vector2 physSize = size - new Vector2(0.05f, 0.05f);
             if (Physics2D.OverlapBox(center, physSize, 0f, platformLayer) != null) continue;
             
-            Instantiate(prefabToUse, new Vector3(center.x, center.y, 0f), Quaternion.identity);
+            GameObject platformObj = Instantiate(prefabToUse, new Vector3(center.x, center.y, 0f), Quaternion.identity, transform);
             placedRects.Add(cand);
             return;
         }
@@ -101,9 +103,17 @@ public class PlatformSpawner : MonoBehaviour
         }
         return true;
     }
-    
+
     public List<Rect> GetPlatformBounds()
     {
         return new List<Rect>(placedRects);
     }
+
+    public void ClearPlatforms()
+    {
+        foreach (Transform child in transform)
+            Destroy(child.gameObject);
+        placedRects.Clear();
+    }
+
 }

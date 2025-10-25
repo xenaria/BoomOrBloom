@@ -3,20 +3,20 @@ using System.Collections.Generic;
 
 public class ItemSpawner : MonoBehaviour
 {
+    public LevelData levelData;
+    public PlatformSpawner platformSpawner;
+    int bloomCount => levelData.totalBlooms;
+    int bombCount => levelData.totalBombs;
+
     [Header("Spawn Area")]
     public Transform startLimit;
     public Transform endLimit;
 
     [Header("Booms")]
     public GameObject bombPrefab;
-    public int bombCount = 10;
 
     [Header("Blooms")]
     public GameObject bloomPrefab;
-    public int bloomCount = 10;
-
-    [Header("Platform Reference")]
-    public PlatformSpawner platformSpawner;
 
     [Header("Spawn Settings")]
     public float itemSpacing = 0.8f;  // Minimum distance between items
@@ -28,11 +28,10 @@ public class ItemSpawner : MonoBehaviour
 
     void Start()
     {
-        // Wait a frame to ensure platforms are spawned
-        Invoke(nameof(SpawnLevel), 0.1f);
+        
     }
 
-    public void SpawnLevel()
+    public void SpawnNewLevel()
     {
         ClearLevel();
         spawnedPositions.Clear();

@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : MonoBehaviour
 {
     // events
     public UnityEvent gameStart;
     public UnityEvent gameRestart;
     public UnityEvent<int> scoreChange;
+    public UnityEvent gameWin;
     public UnityEvent gameOver;
 
-    public GameScore gameScore;
+    public IntVariable gameScore;
+    public LevelData levelData;
 
     bool IsNewSession = true;
     private int score = 0;
 
-    override public void Awake()
+    public void Awake()
     {
-        base.Awake(); // Call Singleton's Awake
         if (IsNewSession)
         {
             IsNewSession = false;
@@ -35,24 +36,49 @@ public class GameManager : Singleton<GameManager>
 
     public void GameRestart()
     {
-        ResetScore();
-        SetScore(score);
+        levelData.Reset();
+        // ResetScore();
+        // SetScore(score);
+        score = 0;
+        scoreChange?.Invoke(score);
         gameRestart.Invoke();
         Time.timeScale = 1.0f;
     }
 
-    public void IncreaseScore(int inc)
+    public void OnBloomCollected()
     {
-        SetScore(score + inc);
-        gameScore.ApplyChange(inc);
-        Debug.Log($"Added {inc} points to gameScore. \nCurrent gameScore: {gameScore.Value}");
+        levelData.collectedBlooms++;
+
+        score = levelData.collectedBlooms;
+        scoreChange?.Invoke(score);
+
+        Debug.Log($"Bloom collected: {levelData.collectedBlooms}/{levelData.totalBlooms}");
+
+        if (levelData.collectedBlooms >= levelData.totalBlooms)
+            GameWin();
     }
 
-    public void SetScore(int newScore)
+
+
+    private void GameWin()
     {
-        score = Mathf.Max(0, newScore);
-        scoreChange?.Invoke(score);
+        Debug.Log("All blooms collected! You win!");
+        Time.timeScale = 0f; // optionally pause game
+        gameWin?.Invoke();
+        // Add win UI, stop player movement, etc.
     }
+    // public void IncreaseScore(int inc)
+    // {
+    //     SetScore(score + inc);
+    //     gameScore.ApplyChange(inc);
+    //     Debug.Log($"Added {inc} points to gameScore. \nCurrent gameScore: {gameScore.Value}");
+    // }
+
+    // public void SetScore(int newScore)
+    // {
+    //     score = Mathf.Max(0, newScore);
+    //     scoreChange?.Invoke(score);
+    // }
 
     public void GameOver()
     {

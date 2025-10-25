@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GameScore", menuName = "Scriptable Objects/GameScore")]
-public class GameScore : Variable<int>
+[CreateAssetMenu(fileName = "IntVariable", menuName = "ScriptableObjects/IntVariable")]
+public class IntVariable : Variable<int>
 {
      public int previousHighestValue;
     public override void SetValue(int value)
@@ -12,7 +12,7 @@ public class GameScore : Variable<int>
     }
 
     // overload
-    public void SetValue(GameScore value)
+    public void SetValue(IntVariable value)
     {
         SetValue(value.Value);
     }
@@ -23,7 +23,7 @@ public class GameScore : Variable<int>
         SetValue(Value + amount);
     }
 
-    public void ApplyChange(GameScore amount)
+    public void ApplyChange(IntVariable amount)
     {
         ApplyChange(amount.Value);
     }

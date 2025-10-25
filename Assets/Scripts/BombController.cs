@@ -57,15 +57,35 @@ public class BombController : MonoBehaviour
         if (explosionVfx)
             Instantiate(explosionVfx, transform.position, Quaternion.identity);
 
+            
+        PlayerController playerHit = null;
+
         var hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius, playerLayer);
         foreach (var h in hits)
-            // h.GetComponent<PlayerController>()?.Kill();
-            Debug.Log("Player killed!");
+        {
+            PlayerController player = h.GetComponent<PlayerController>();
+            if (player != null && player.IsAlive()) 
+            {
+                playerHit = player; // store for later
+                playerHit.DisableMovement(); 
+                Debug.Log("Bomb hit player! Waiting for animation...");
+                break;
+            }
+        }
 
         GetComponent<Collider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
 
-        yield return new WaitForSeconds(explodeSfx.length);
+        float delay = explodeSfx ? explodeSfx.length * 0.5f : 0.5f;
+        yield return new WaitForSeconds(delay);
+
+        // Kill player *after* effects finish
+        if (playerHit != null)
+        {
+            playerHit.Kill();
+            Debug.Log("Player killed after explosion animation.");
+        }
+        
         Destroy(gameObject, 0.2f);
     }
     
