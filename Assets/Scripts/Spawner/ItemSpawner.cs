@@ -9,17 +9,18 @@ public class ItemSpawner : MonoBehaviour
 
     [Header("Booms")]
     public GameObject bombPrefab;
-    public int bombCount = 8;
+    public int bombCount = 10;
 
     [Header("Blooms")]
-    public GameObject cherryPrefab;
-    public int cherryCount = 15;
+    public GameObject bloomPrefab;
+    public int bloomCount = 10;
 
     [Header("Platform Reference")]
     public PlatformSpawner platformSpawner;
 
     [Header("Spawn Settings")]
     public float itemSpacing = 0.8f;  // Minimum distance between items
+    public float minVerticalClearance = 1.5f; // Minimum space above spawn point
     public int maxSpawnAttempts = 100;
 
     private GameObject[] spawnedObjects;
@@ -49,14 +50,14 @@ public class ItemSpawner : MonoBehaviour
             return;
         }
 
-        int totalObjects = cherryCount + bombCount;
+        int totalObjects = bloomCount + bombCount;
         spawnedObjects = new GameObject[totalObjects];
         int index = 0;
 
         // Spawn blooms
-        for (int i = 0; i < cherryCount; i++)
+        for (int i = 0; i < bloomCount; i++)
         {
-            GameObject obj = SpawnObjectOnPlatform(cherryPrefab, platforms);
+            GameObject obj = SpawnObjectOnPlatform(bloomPrefab, platforms);
             if (obj != null) spawnedObjects[index++] = obj;
         }
 
@@ -85,6 +86,10 @@ public class ItemSpawner : MonoBehaviour
             if (IsTooCloseToOtherItems(pos))
                 continue;
 
+            // Check if there's enough vertical clearance above spawn point
+            if (!HasVerticalClearance(pos, platforms))
+                continue;
+
             spawnedPositions.Add(pos);
             return Instantiate(prefab, pos, Quaternion.identity);
         }
@@ -101,6 +106,24 @@ public class ItemSpawner : MonoBehaviour
                 return true;
         }
         return false;
+    }
+
+    private bool HasVerticalClearance(Vector2 spawnPos, List<Rect> platforms)
+    {
+        // Check if any platform blocks the space above the spawn point
+        foreach (Rect platform in platforms)
+        {
+            // Check if this platform is above our spawn position
+            if (platform.yMin > spawnPos.y && platform.yMin < spawnPos.y + minVerticalClearance)
+            {
+                // Check if the platform horizontally overlaps with our spawn position
+                if (spawnPos.x >= platform.xMin && spawnPos.x <= platform.xMax)
+                {
+                    return false; // Not enough clearance - platform is blocking
+                }
+            }
+        }
+        return true; // Enough clearance - no platforms blocking above
     }
 
     private void ClearLevel()

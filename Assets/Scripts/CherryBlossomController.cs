@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class CherryBlossomController : MonoBehaviour
 {
-    
-    public GameManager gameManager;
+
     public LayerMask playerLayer;
 
     [Header("SFX")]
@@ -30,7 +29,8 @@ public class CherryBlossomController : MonoBehaviour
     
     IEnumerator Bloom()
     {
-        gameManager.IncreaseScore(1);
+        GameManager.instance.IncreaseScore(1);
+        Debug.Log($"Score: {GameManager.instance.gameScore}");
         bloomSprite.enabled = false;
 
         if (bloomVfx)

@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
             {
                 //_animator.SetBool("isRunning", moving);
                 HandleMovement(faceRightState == true ? 1 : -1);
-                Debug.Log("<color-pink>moving");
             }
             else
             {
@@ -76,7 +75,6 @@ public class PlayerController : MonoBehaviour
         {
             FlipPlayerSprite(value);
             moving = true;
-            Debug.Log("<color-pink>MoveCheck() called");
             HandleMovement(value);
         }
     }
@@ -159,5 +157,19 @@ public class PlayerController : MonoBehaviour
         alive = false;
 
         Time.timeScale = 0.0f;
+    }
+
+    public void GameRestart()
+    {
+        playerBody.transform.position = new Vector3(-6.54f, -0.15f, 0);
+        playerBody.linearVelocity = Vector3.zero;
+        
+        faceRightState = true;
+        playerSprite.flipX = false;
+        
+        onGroundState = true;
+        alive = true;
+        
+        GameManager.instance.ResetScore();
     }
 }
