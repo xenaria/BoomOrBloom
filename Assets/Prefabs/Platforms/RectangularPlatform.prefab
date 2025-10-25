@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2164815915069995145}
   - component: {fileID: 3558064129659436908}
   - component: {fileID: 3598119722984062935}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: RectangularPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -40,12 +40,12 @@ public class BombController : MonoBehaviour
         if (timerSfx && sfx) sfx.PlayOneShot(timerSfx);   // countdown cue
         Debug.Log("Bomb is fused!");
         yield return new WaitForSeconds(fuseTime);
-        Explode();
+        StartCoroutine(Explode());
     }
 
-    void Explode()
+    IEnumerator Explode()
     {
-        if (exploded) return;
+        if (exploded) yield return null;
         exploded = true;
 
         if (explodeSfx)
@@ -63,6 +63,9 @@ public class BombController : MonoBehaviour
             Debug.Log("Player killed!");
 
         GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+
+        yield return new WaitForSeconds(explodeSfx.length);
         Destroy(gameObject, 0.2f);
     }
     

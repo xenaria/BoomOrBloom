@@ -26,36 +26,36 @@ public class ItemSpawner : MonoBehaviour
     {
         ClearLevel();
 
-        int totalObjects =+ cherryCount + bombCount;
+        int totalObjects = cherryCount + bombCount;
         spawnedObjects = new GameObject[totalObjects];
 
         int index = 0;
 
-
-        // Spawn tokens
         for (int i = 0; i < cherryCount; i++)
             spawnedObjects[index++] = SpawnObject(cherryPrefab);
 
-        // Spawn bombs
         for (int i = 0; i < bombCount; i++)
             spawnedObjects[index++] = SpawnObject(bombPrefab);
     }
 
     private GameObject SpawnObject(GameObject prefab)
     {
-        float x = Random.Range(-areaSize / 2f, areaSize / 2f);
-        float y = Random.Range(-areaSize / 2f, areaSize / 2f);
-        Vector2 pos = new Vector2(x, y);
+        float minX = Mathf.Min(startLimit.position.x, endLimit.position.x);
+        float maxX = Mathf.Max(startLimit.position.x, endLimit.position.x);
+        float minY = Mathf.Min(startLimit.position.y, endLimit.position.y);
+        float maxY = Mathf.Max(startLimit.position.y, endLimit.position.y);
 
+        float x = Random.Range(minX, maxX);
+        float y = Random.Range(minY, maxY);
+
+        Vector2 pos = new Vector2(x, y);
         return Instantiate(prefab, pos, Quaternion.identity);
     }
 
     private void ClearLevel()
     {
-        if (spawnedObjects != null)
-        {
-            foreach (var obj in spawnedObjects)
-                if (obj != null) Destroy(obj);
-        }
+        if (spawnedObjects == null) return;
+        foreach (var obj in spawnedObjects)
+            if (obj != null) Destroy(obj);
     }
 }

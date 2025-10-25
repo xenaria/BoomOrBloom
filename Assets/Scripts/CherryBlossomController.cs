@@ -38,6 +38,7 @@ public class CherryBlossomController : MonoBehaviour
         
         sfx.PlayOneShot(bloomSfx);
         GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
 
         // wait for the clip to finish
         yield return new WaitForSeconds(bloomSfx.length);

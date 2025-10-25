@@ -4,22 +4,25 @@ using System.Collections.Generic;
 public class PlatformSpawner : MonoBehaviour
 {
     [Header("Platform Prefabs")]
-    public GameObject rectanglePrefab;  
+    public GameObject rectanglePrefab;
     public GameObject squarePrefab;
 
     [Header("Spawn Settings")]
     public int numberOfPlatforms = 20;
     public Transform startLimit;
     public Transform endLimit;
-    public float gridSize = 1f;
-    [SerializeField] private int maxAttempts = 1000;
+    public float gridSize = 0.1f;  
+    [SerializeField] private int maxAttempts = 5000;
 
-
-    [Header("Min Gaps")]
+    [Header("Min Gaps (unused now)")]
     public float minHorizontalGap = 1f;
     public float minVerticalGap = 1f;
 
+    [Header("Packing")]
+    public float touchMargin = 0.05f;
+
     private readonly List<Rect> placedRects = new List<Rect>();
+    public LayerMask platformLayer;
 
     void Start()
     {
@@ -35,21 +38,18 @@ public class PlatformSpawner : MonoBehaviour
 
         if (isSquare)
         {
-            size = new Vector2(1.5f, 1.5f);
             prefabToUse = squarePrefab;
+            size = new Vector2(1.5f, 1.5f); 
         }
         else
         {
-            int w = Random.Range(3, 6); 
-            size = new Vector2(w, 1f);
             prefabToUse = rectanglePrefab;
+            size = new Vector2(6f, 1.5f);  
         }
 
-        // spawn area rect (min..max from start/end)
         Vector2 min = Vector2.Min((Vector2)startLimit.position, (Vector2)endLimit.position);
         Vector2 max = Vector2.Max((Vector2)startLimit.position, (Vector2)endLimit.position);
 
-        // keep inside bounds accounting for size
         float minX = min.x + size.x * 0.5f;
         float maxX = max.x - size.x * 0.5f;
         float minY = min.y + size.y * 0.5f;
@@ -57,24 +57,22 @@ public class PlatformSpawner : MonoBehaviour
 
         for (int attempt = 0; attempt < maxAttempts; attempt++)
         {
-            float rx = Random.Range(minX, maxX);
-            float ry = Random.Range(minY, maxY);
-
-            // snap to grid
-            rx = Mathf.Round(rx / gridSize) * gridSize;
-            ry = Mathf.Round(ry / gridSize) * gridSize;
+            float rx = Mathf.Round(Random.Range(minX, maxX) / gridSize) * gridSize;
+            float ry = Mathf.Round(Random.Range(minY, maxY) / gridSize) * gridSize;
 
             Vector2 center = new Vector2(rx, ry);
             Rect cand = MakeRect(center, size);
 
-            if (IsValid(cand))
-            {
-                Instantiate(prefabToUse, new Vector3(center.x, center.y, 0f), Quaternion.identity);
-                placedRects.Add(cand);
-                return;
-            }
+            if (!IsValid(cand)) continue;
+
+            Vector2 physSize = size - new Vector2(touchMargin, touchMargin);
+            if (Physics2D.OverlapBox(center, physSize, 0f, platformLayer) != null) continue;
+            Instantiate(prefabToUse, new Vector3(center.x, center.y, 0f), Quaternion.identity);
+           
+            placedRects.Add(cand);
+            return;
+       
         }
-        // no valid spot found within attempts; skip spawning this one
     }
 
     Rect MakeRect(Vector2 center, Vector2 size)
@@ -82,27 +80,20 @@ public class PlatformSpawner : MonoBehaviour
         return new Rect(center - size * 0.5f, size);
     }
 
+    // CHANGED: only reject when rectangles overlap (with optional margin)
     bool IsValid(Rect cand)
     {
-        // enforce both gaps: horizontal >= minHorizontalGap AND vertical >= minVerticalGap
         for (int i = 0; i < placedRects.Count; i++)
-        {
-            Rect r = placedRects[i];
-
-            float gapX = GapAlongAxis(cand.xMin, cand.xMax, r.xMin, r.xMax);
-            float gapY = GapAlongAxis(cand.yMin, cand.yMax, r.yMin, r.yMax);
-
-            if (gapX < minHorizontalGap || gapY < minVerticalGap)
+            if (RectsOverlap(cand, placedRects[i], touchMargin))
                 return false;
-        }
         return true;
     }
 
-    float GapAlongAxis(float aMin, float aMax, float bMin, float bMax)
+    bool RectsOverlap(Rect a, Rect b, float margin)
     {
-        // positive gap if separated, 0 if touching/overlapping
-        if (aMax <= bMin) return bMin - aMax;
-        if (bMax <= aMin) return aMin - bMax;
-        return 0f;
+        return (a.xMin < b.xMax - margin) &&
+               (a.xMax > b.xMin + margin) &&
+               (a.yMin < b.yMax - margin) &&
+               (a.yMax > b.yMin + margin);
     }
 }
