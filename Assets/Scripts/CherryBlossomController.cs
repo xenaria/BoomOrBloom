@@ -37,7 +37,7 @@ public class CherryBlossomController : MonoBehaviour
         }
     }
     
-    public void CollectWithTwist()
+    public void CollectByBomb()
     {
         if (bloomSprite.enabled)
         {

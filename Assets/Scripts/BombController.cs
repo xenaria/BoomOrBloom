@@ -5,10 +5,11 @@ using UnityEngine;
 public class BombController : MonoBehaviour
 {
     public LevelData levelData;
+    float fuseTime => levelData.fuseTime;
+    float radiusMultiplier => levelData.radiusMultiplier;
+    public float explosionRadius;
+    
 
-    [Header("Fuse/Explosion")]
-    public float fuseTime = 1f;
-    public float explosionRadius = 1.2f;
     public LayerMask playerLayer;
 
     [Header("SFX")]
@@ -28,95 +29,173 @@ public class BombController : MonoBehaviour
         if (bombSprite) bombSprite.enabled = false;
     }
 
+    void Start()
+    {
+        explosionRadius = levelData.explosionRadius * radiusMultiplier;
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (armed || exploded) return;
         if ((playerLayer.value & (1 << other.gameObject.layer)) == 0) return;
-        StartCoroutine(Fuse());
-    }
 
-    IEnumerator Fuse()
-    {
         armed = true;
-        if (bombSprite) bombSprite.enabled = true;
-        if (timerSfx && sfx) sfx.PlayOneShot(timerSfx);   // countdown cue
-        Debug.Log("Bomb is fused!");
-        yield return new WaitForSeconds(fuseTime);
-        StartCoroutine(Explode());
+
+        if (levelData.gameMode == LevelData.GameMode.Twist)
+        {
+            StartCoroutine(TwistModeSequenceCoroutine());
+        }
+        else
+        {
+            StartCoroutine(NormalModeSequenceCoroutine());
+        }
     }
 
-    IEnumerator Explode()
+    private IEnumerator NormalModeSequenceCoroutine()
     {
-        if (exploded) yield return null;
+        Debug.Log("Bomb fuse started (Normal mode)");
+        yield return StartCoroutine(Fuse());
+
         exploded = true;
 
         if (explodeSfx)
         {
-            sfx.spatialBlend = 0f;    
-            sfx.PlayOneShot(explodeSfx); 
+            sfx.spatialBlend = 0f;
+            sfx.PlayOneShot(explodeSfx);
         }
 
         if (explosionVfx)
             Instantiate(explosionVfx, transform.position, Quaternion.identity);
 
-        if (levelData.gameMode == LevelData.GameMode.Twist)
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+       
+        PlayerController playerHit = null;
+        var hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius, playerLayer);
+        foreach (var h in hits)
         {
-            var hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
-            foreach (var h in hits)
+            PlayerController player = h.GetComponent<PlayerController>();
+            if (player != null && player.IsAlive())
             {
-                CherryBlossomController bloom = h.GetComponent<CherryBlossomController>();
-                if (bloom != null)
-                    bloom.CollectWithTwist();
-            }
-        }
-        else
-        {
-            var hits = Physics2D.OverlapCircleAll(transform.position, playerLayer);
-            foreach (var h in hits)
-            {
-                PlayerController player = h.GetComponent<PlayerController>();
-                if (player != null && player.IsAlive())
-                {
-                    player.DisableMovement();
-                    float delay = explodeSfx ? explodeSfx.length * 0.5f : 0.5f;
-                    yield return new WaitForSeconds(delay);
-                    player.Kill();
-                    break;
-                }
+                playerHit = player;
+                playerHit.DisableMovement();
+                Debug.Log("Bomb hit player! Waiting for animation...");
+                break;
             }
         }
 
-            
-        // PlayerController playerHit = null;
+        float killDelay = explodeSfx ? explodeSfx.length * 0.5f : 0.5f;
+        yield return new WaitForSeconds(killDelay);
 
-        // // var hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius, playerLayer);
-        // foreach (var h in hits)
-        // {
-        //     PlayerController player = h.GetComponent<PlayerController>();
-        //     if (player != null && player.IsAlive()) 
-        //     {
-        //         playerHit = player; // store for later
-        //         playerHit.DisableMovement(); 
-        //         Debug.Log("Bomb hit player! Waiting for animation...");
-        //         break;
-        //     }
-        // }
+        if (playerHit != null)
+        {
+            playerHit.Kill();
+            Debug.Log("Player killed after explosion animation.");
+        }
+
+        Destroy(gameObject, 0.2f);
+    }
+    
+    private IEnumerator TwistModeSequenceCoroutine()
+    {
+       Debug.Log("Bomb fuse started (Twist mode)");
+
+        yield return StartCoroutine(Fuse());
+
+        exploded = true;
+        if (explodeSfx)
+        {
+            sfx.spatialBlend = 0f;
+            sfx.PlayOneShot(explodeSfx);
+        }
+
+        if (explosionVfx)
+            Instantiate(explosionVfx, transform.position, Quaternion.identity);
 
         GetComponent<Collider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
 
-        // float delay = explodeSfx ? explodeSfx.length * 0.5f : 0.5f;
-        // yield return new WaitForSeconds(delay);
+        var hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        foreach (var h in hits)
+        {
+            CherryBlossomController bloom = h.GetComponent<CherryBlossomController>();
+            if (bloom != null)
+                bloom.CollectByBomb();
+        }
 
-        // // Kill player *after* effects finish
-        // if (playerHit != null)
+        yield return new WaitForSeconds(0.4f);
+        Destroy(gameObject);
+    }
+
+
+
+
+    
+
+
+    IEnumerator Fuse()
+    {
+        if (bombSprite) bombSprite.enabled = true;
+        if (timerSfx && sfx) sfx.PlayOneShot(timerSfx);   // countdown cue
+        Debug.Log("Bomb is fused!");
+        yield return new WaitForSeconds(fuseTime);
+    }
+
+    // IEnumerator Explode()
+    // {
+    //     if (exploded) yield return null;
+    //     exploded = true;
+
+    //     if (explodeSfx)
+    //     {
+    //         sfx.spatialBlend = 0f;    
+    //         sfx.PlayOneShot(explodeSfx); 
+    //     }
+
+    //     if (explosionVfx)
+    //         Instantiate(explosionVfx, transform.position, Quaternion.identity);
+
+    //     GetComponent<Collider2D>().enabled = false;
+    //     GetComponent<SpriteRenderer>().enabled = false;
+
+        // if (levelData.gameMode == LevelData.GameMode.Twist)
         // {
-        //     playerHit.Kill();
-        //     Debug.Log("Player killed after explosion animation.");
+        //     var hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        //     foreach (var h in hits)
+        //     {
+        //         CherryBlossomController bloom = h.GetComponent<CherryBlossomController>();
+        //         if (bloom != null)
+        //             bloom.CollectWithTwist();
+        //     }
+        // }
+        // else
+        // {
+        //     PlayerController playerHit = null;
+        //     var hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius, playerLayer);
+        //     foreach (var h in hits)
+        //     {
+        //         PlayerController player = h.GetComponent<PlayerController>();
+        //         if (player != null && player.IsAlive())
+        //         {
+        //             playerHit = player;
+        //             playerHit.DisableMovement();
+        //             Debug.Log("Bomb hit player! Waiting for animation...");
+        //             break;
+        //         }
+        //     }
+
+        //     float delay = explodeSfx ? explodeSfx.length * 0.5f : 0.5f;
+        //     yield return new WaitForSeconds(delay);
+
+        //     if (playerHit != null)
+        //     {
+        //         playerHit.Kill();
+        //         Debug.Log("Player killed after explosion animation.");
+        //     }
         // }
         
-        Destroy(gameObject, 0.2f);
-    }
+    //     // Destroy(gameObject, 0.2f);
+    // }
     
     
     // editor helper

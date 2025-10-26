@@ -20,7 +20,12 @@ public class LevelData : ScriptableObject
     public int totalPlatforms = 12;
     public float platformGridSize = 1.5f;
     public float minHorizontalGap = 1f;
-    public float minVerticalGap = 1f; 
+    public float minVerticalGap = 1f;
+
+    [Header("Bomb Settings")]
+    public float fuseTime = 1f;
+    public float explosionRadius = 1.2f;
+    public float radiusMultiplier = 3f;
     
 
     [Header("Runtime Tracking")]

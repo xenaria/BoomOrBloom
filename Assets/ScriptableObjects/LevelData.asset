@@ -19,5 +19,8 @@ MonoBehaviour:
   platformGridSize: 1.5
   minHorizontalGap: 1
   minVerticalGap: 1
-  collectedBlooms: 5
+  fuseTime: 1
+  explosionRadius: 1.5
+  radiusMultiplier: 4
+  collectedBlooms: 0
   remainingBombs: 10

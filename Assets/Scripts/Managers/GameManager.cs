@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
 
     private void GameWin()
     {
+        levelData.Reset();
         Debug.Log("All blooms collected! You win!");
         Time.timeScale = 0f; // optionally pause game
         gameWin?.Invoke();
