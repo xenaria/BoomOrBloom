@@ -1,5 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/N5tu08Ko)
-# **Game Title**
+# **Boom or Bloom**
 
 _(Enter your game's title here.)_
 _(Add some screenshots here showcasing your game)_
@@ -16,7 +16,7 @@ You should provide a link to your **Full gameplay recording** showing mechanics,
 
 ## Chosen Theme
 
-_(State your **chosen theme** clearly here. This will affect how we grade your work)_
+"The right man in the wrong place can make all the difference in the world."
 
 ## Game Description
 

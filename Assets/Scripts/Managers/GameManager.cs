@@ -120,5 +120,10 @@ public class GameManager : MonoBehaviour
         gameScore.SetValue(0);
         Debug.Log($"Game score reset to {score}. \nHighest score: {gameScore.previousHighestValue.ToString()}");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
     
 }
