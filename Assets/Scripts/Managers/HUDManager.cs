@@ -5,11 +5,11 @@ using UnityEngine.SocialPlatforms.Impl;
 public class HUDManager : MonoBehaviour
 {
     private Vector3[] scoreTextPosition = {
-        new Vector3(-601.9744f, 358.8726f, 0),
+        new Vector3(-553f, 438f, 0),
         new Vector3(0,48.036f,0)
     };
     private Vector3[] restartButtonPosition = {
-        new Vector3(801.5745f, 358.8726f, 0),
+        new Vector3(894f, 459f, 0),
         new Vector3(0, -98f, 0)
     };
 

@@ -32,39 +32,40 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         // Set to be 30 FPS
-        Application.targetFrameRate =  30;
+        Application.targetFrameRate = 30;
         playerBody = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
 
+        
+        _animator.SetBool("onGround", true);
+        _animator.SetBool("isRunning", false);
+
+    }
+    void Update()
+    {
+        IsGrounded();
     }
 
-    // FixedUpdate is called 50 times a second
     void FixedUpdate()
     {
 
-        IsGrounded(); // always check if player is grounded
-
+        FallDetector();
         if (alive)
         {
             if (moving)
             {
-                //_animator.SetBool("isRunning", moving);
                 HandleMovement(faceRightState == true ? 1 : -1);
+                _animator.SetFloat("xSpeed", Mathf.Abs(playerBody.linearVelocity.x));
+                _animator.SetBool("isRunning", true);
             }
             else
             {
-                //_animator.SetBool("isRunning", false);
+
+                _animator.SetBool("isRunning", false);
             }
         }
 
-        if (playerBody.linearVelocityY < fallThreshold)
-        {
-            //_animator.SetBool("isFalling", true);
-        }
-        else
-        {
-            //_animator.SetBool("isFalling", false);
-        }
+        
     }
 
     public void MoveCheck(int value)
@@ -87,17 +88,12 @@ public class PlayerController : MonoBehaviour
         {
             faceRightState = false;
             playerSprite.flipX = true;
-            // if (echoBody.linearVelocity.x > 0.05f)
-            //     echoAnimator.SetTrigger("onSkid");
-
         }
 
         else if (value == 1 && !faceRightState)
         {
             faceRightState = true;
             playerSprite.flipX = false;
-            // if (echoBody.linearVelocity.x < -0.05f)
-            //     echoAnimator.SetTrigger("onSkid");
         }
     }
 
@@ -118,9 +114,22 @@ public class PlayerController : MonoBehaviour
 
             if (playerBody.linearVelocityY > maxUpSpeed)
                 playerBody.linearVelocity = new Vector2(playerBody.linearVelocityX, maxUpSpeed);
-
+            
             jumpCount++;
             jumpedState = true;
+            
+            _animator.SetBool("isJumping", true);
+            _animator.SetBool("isFalling", false);
+            _animator.SetInteger("jumpCount", jumpCount);
+
+            if (jumpCount == 1)
+            {
+                _animator.SetTrigger("jump");
+            }
+            else if (jumpCount > 1)
+            {
+                _animator.SetTrigger("doubleJump");
+            }
 
             Debug.Log("i jumped " + jumpCount + " time(s)");
         }
@@ -136,6 +145,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void FallDetector()
+    {
+        if (playerBody.linearVelocityY < fallThreshold)
+        {
+            _animator.SetBool("isFalling", true);
+            _animator.SetBool("isJumping", false);
+        }
+        else
+        {
+            _animator.SetBool("isFalling", false);
+        }
+    }
+
     // Check if onGround
     public void IsGrounded()
     {
@@ -145,12 +167,21 @@ public class PlayerController : MonoBehaviour
         {
             onGroundState = true;
             jumpCount = 0; // reset double jump
+
+            _animator.SetBool("onGround", true);
+            _animator.SetBool("isFalling", false);
+            _animator.SetInteger("jumpCount", 0);
         }
         else
         {
             onGroundState = false;
+            _animator.SetBool("onGround", false);
+
+            if (playerBody.linearVelocityY < -0.1f)
+            {
+                _animator.SetBool("isFalling", true);
+            }
         }
-        //_animator.SetBool("onGround", onGroundState);
     }
 
     public bool IsAlive()

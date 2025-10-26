@@ -167,7 +167,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelData: {fileID: 11400000, guid: 911b79d99bca2984d905fb7f29075360, type: 2}
-  fuseTime: 1
   explosionRadius: 4
   playerLayer:
     serializedVersion: 2
@@ -176,6 +175,7 @@ MonoBehaviour:
   explodeSfx: {fileID: 8300000, guid: c4b9dc054d64615439b6350a2e1f33b2, type: 3}
   bombSprite: {fileID: 8422005841082111055}
   explosionVfx: {fileID: 5754375633414059660, guid: 0185500e6c941264a93a824fd15c41bf, type: 3}
+  explosionRadiusVisualPrefab: {fileID: 8437780656305346003, guid: af3f43bb3d2b1894783a74bde6e7daca, type: 3}
 --- !u!82 &6103888392528710032
 AudioSource:
   m_ObjectHideFlags: 0

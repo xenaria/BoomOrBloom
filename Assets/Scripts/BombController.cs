@@ -9,7 +9,6 @@ public class BombController : MonoBehaviour
     float radiusMultiplier => levelData.radiusMultiplier;
     public float explosionRadius;
     
-
     public LayerMask playerLayer;
 
     [Header("SFX")]
@@ -19,6 +18,9 @@ public class BombController : MonoBehaviour
     [Header("Refs")]
     public SpriteRenderer bombSprite;
     public GameObject explosionVfx;
+
+    [Header("Explosion Radius Visual")]
+    public GameObject explosionRadiusVisualPrefab;
 
     AudioSource sfx;
     bool armed, exploded;
@@ -57,6 +59,7 @@ public class BombController : MonoBehaviour
         yield return StartCoroutine(Fuse());
 
         exploded = true;
+        ShowExplosionRadius();
 
         if (explodeSfx)
         {
@@ -64,8 +67,8 @@ public class BombController : MonoBehaviour
             sfx.PlayOneShot(explodeSfx);
         }
 
-        if (explosionVfx)
-            Instantiate(explosionVfx, transform.position, Quaternion.identity);
+        // if (explosionVfx)
+        //     Instantiate(explosionVfx, transform.position, Quaternion.identity);
 
         GetComponent<Collider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
@@ -103,14 +106,16 @@ public class BombController : MonoBehaviour
         yield return StartCoroutine(Fuse());
 
         exploded = true;
+        ShowExplosionRadius();
+
         if (explodeSfx)
         {
             sfx.spatialBlend = 0f;
             sfx.PlayOneShot(explodeSfx);
         }
 
-        if (explosionVfx)
-            Instantiate(explosionVfx, transform.position, Quaternion.identity);
+        // if (explosionVfx)
+        //     Instantiate(explosionVfx, transform.position, Quaternion.identity);
 
         GetComponent<Collider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
@@ -127,12 +132,6 @@ public class BombController : MonoBehaviour
         Destroy(gameObject);
     }
 
-
-
-
-    
-
-
     IEnumerator Fuse()
     {
         if (bombSprite) bombSprite.enabled = true;
@@ -141,64 +140,37 @@ public class BombController : MonoBehaviour
         yield return new WaitForSeconds(fuseTime);
     }
 
-    // IEnumerator Explode()
-    // {
-    //     if (exploded) yield return null;
-    //     exploded = true;
+    void ShowExplosionRadius()
+    {
+        if (explosionRadiusVisualPrefab == null) return;
 
-    //     if (explodeSfx)
-    //     {
-    //         sfx.spatialBlend = 0f;    
-    //         sfx.PlayOneShot(explodeSfx); 
-    //     }
+        GameObject circle = Instantiate(explosionRadiusVisualPrefab, transform.position, Quaternion.identity);
+        float targetScale = explosionRadius; 
+        circle.transform.localScale = Vector3.zero;
 
-    //     if (explosionVfx)
-    //         Instantiate(explosionVfx, transform.position, Quaternion.identity);
+        SpriteRenderer sr = circle.GetComponent<SpriteRenderer>();
+        StartCoroutine(ScaleAndFade(circle.transform, sr, targetScale));
+    }
 
-    //     GetComponent<Collider2D>().enabled = false;
-    //     GetComponent<SpriteRenderer>().enabled = false;
+    IEnumerator ScaleAndFade(Transform circle, SpriteRenderer sr, float targetScale)
+    {
+        float t = 0f;
+        Color startColor = sr.color;
 
-        // if (levelData.gameMode == LevelData.GameMode.Twist)
-        // {
-        //     var hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
-        //     foreach (var h in hits)
-        //     {
-        //         CherryBlossomController bloom = h.GetComponent<CherryBlossomController>();
-        //         if (bloom != null)
-        //             bloom.CollectWithTwist();
-        //     }
-        // }
-        // else
-        // {
-        //     PlayerController playerHit = null;
-        //     var hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius, playerLayer);
-        //     foreach (var h in hits)
-        //     {
-        //         PlayerController player = h.GetComponent<PlayerController>();
-        //         if (player != null && player.IsAlive())
-        //         {
-        //             playerHit = player;
-        //             playerHit.DisableMovement();
-        //             Debug.Log("Bomb hit player! Waiting for animation...");
-        //             break;
-        //         }
-        //     }
+        while (t < 1f)
+        {
+            t += Time.unscaledDeltaTime * 4f;
+            float scale = Mathf.Lerp(0, targetScale, t);
+            circle.localScale = new Vector3(scale, scale, 1);
 
-        //     float delay = explodeSfx ? explodeSfx.length * 0.5f : 0.5f;
-        //     yield return new WaitForSeconds(delay);
+            sr.color = new Color(startColor.r, startColor.g, startColor.b, Mathf.Lerp(0.5f, 0f, t));
+            yield return null;
+        }
 
-        //     if (playerHit != null)
-        //     {
-        //         playerHit.Kill();
-        //         Debug.Log("Player killed after explosion animation.");
-        //     }
-        // }
-        
-    //     // Destroy(gameObject, 0.2f);
-    // }
-    
-    
-    // editor helper
+        Destroy(circle.gameObject);
+    }
+
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

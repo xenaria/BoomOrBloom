@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: 7ce50ab82db5c8d429fff9ef2b1d0c71
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7556573137997001920
+    second: buttons-cute-removebg-preview_0
+  - first:
+      213: -2945806585938222628
+    second: buttons-cute-removebg-preview_1
+  - first:
+      213: -5628024080648676816
+    second: buttons-cute-removebg-preview_2
+  - first:
+      213: 2317988412316556419
+    second: buttons-cute-removebg-preview_3
+  - first:
+      213: 4764131252149881341
+    second: buttons-cute-removebg-preview_4
+  - first:
+      213: -1999007470026179501
+    second: buttons-cute-removebg-preview_5
+  - first:
+      213: -2125523605353304322
+    second: buttons-cute-removebg-preview_6
+  - first:
+      213: 3646509089736746675
+    second: buttons-cute-removebg-preview_7
+  - first:
+      213: -6172160537658628735
+    second: buttons-cute-removebg-preview_8
+  - first:
+      213: -2564516068398069078
+    second: buttons-cute-removebg-preview_9
+  - first:
+      213: 160474823167879482
+    second: buttons-cute-removebg-preview_10
+  - first:
+      213: -56812442523464659
+    second: buttons-cute-removebg-preview_11
+  - first:
+      213: -6083429742521507244
+    second: buttons-cute-removebg-preview_12
+  - first:
+      213: -546357037433264605
+    second: buttons-cute-removebg-preview_13
+  - first:
+      213: -4136504438101010764
+    second: buttons-cute-removebg-preview_14
+  - first:
+      213: 1351173840586848507
+    second: buttons-cute-removebg-preview_15
+  - first:
+      213: 1065876023454052430
+    second: buttons-cute-removebg-preview_16
+  - first:
+      213: 9049241282159412541
+    second: buttons-cute-removebg-preview_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 2
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: cute_btn_start
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 237
+        width: 196
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c4f1998b375ed860800000000000000
+      internalID: 7556573137997001920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cute_btn_purple
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 237
+        width: 60
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd1652484846e17d0800000000000000
+      internalID: -2945806585938222628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-cute-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 237
+        width: 150
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03a579dcaed35e1b0800000000000000
+      internalID: -5628024080648676816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cute_btn_settings
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 216
+        width: 195
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38c99950e262b2020800000000000000
+      internalID: 2317988412316556419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-cute-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 216
+        width: 82
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df90bb3e1289d1240800000000000000
+      internalID: 4764131252149881341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cute_btn_exit
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 165
+        width: 196
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35cbcb51c491244e0800000000000000
+      internalID: -1999007470026179501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cute_btn_yellow
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 164
+        width: 60
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efe653dda8f9082e0800000000000000
+      internalID: -2125523605353304322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-cute-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 165
+        width: 150
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b6edf372b00b9230800000000000000
+      internalID: 3646509089736746675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-cute-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 117
+        width: 195
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1856c2841b4185aa0800000000000000
+      internalID: -6172160537658628735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cute_btn_pause
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 117
+        width: 82
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaa0a522932096cd0800000000000000
+      internalID: -2564516068398069078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cute_btn_back
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 92
+        width: 196
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a39a05e500f1a3200800000000000000
+      internalID: 160474823167879482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cute_btn_pink
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 91
+        width: 60
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2c01907269263ff0800000000000000
+      internalID: -56812442523464659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-cute-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 92
+        width: 150
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 452a5fc61e0539ba0800000000000000
+      internalID: -6083429742521507244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cute_btn_restart
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 19
+        width: 195
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 326614f4b23fa68f0800000000000000
+      internalID: -546357037433264605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-cute-removebg-preview_14
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 19
+        width: 82
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b69923312f2896c0800000000000000
+      internalID: -4136504438101010764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cute_btn_level
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 19
+        width: 196
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf8bafdf27550c210800000000000000
+      internalID: 1351173840586848507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cute_btn_blue
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 19
+        width: 60
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e40b5989890cace00800000000000000
+      internalID: 1065876023454052430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cute_btn_play
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 19
+        width: 150
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3589ed400d559d70800000000000000
+      internalID: 9049241282159412541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8383901d897feb44db1fe9cd72d737b2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      buttons-cute-removebg-preview_12: -6083429742521507244
+      buttons-cute-removebg-preview_14: -4136504438101010764
+      buttons-cute-removebg-preview_2: -5628024080648676816
+      buttons-cute-removebg-preview_4: 4764131252149881341
+      buttons-cute-removebg-preview_7: 3646509089736746675
+      buttons-cute-removebg-preview_8: -6172160537658628735
+      cute_btn_back: 160474823167879482
+      cute_btn_blue: 1065876023454052430
+      cute_btn_exit: -1999007470026179501
+      cute_btn_level: 1351173840586848507
+      cute_btn_pause: -2564516068398069078
+      cute_btn_pink: -56812442523464659
+      cute_btn_play: 9049241282159412541
+      cute_btn_purple: -2945806585938222628
+      cute_btn_restart: -546357037433264605
+      cute_btn_settings: 2317988412316556419
+      cute_btn_start: 7556573137997001920
+      cute_btn_yellow: -2125523605353304322
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
