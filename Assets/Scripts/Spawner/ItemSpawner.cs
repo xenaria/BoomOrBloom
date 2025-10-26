@@ -30,7 +30,6 @@ public class ItemSpawner : MonoBehaviour
     public float spawnCollisionRadius = 0.2f;
 
     [Header("Boomb Bloom Proximity Settings")]
-    // How far awar bomb is from bloom in Twist mode.. so its not impossible
     public float bombBloomMinDistancePercent = 0.4f;
     public float bombBloomMaxDistancePercent = 1.2f;
     public int proximityCheckAttempts = 100; // Attempts per bomb in Twist mode
@@ -52,13 +51,10 @@ public class ItemSpawner : MonoBehaviour
         itemsParent.SetParent(transform);
     }
 
-    // private GameObject spawnedObjects;
-
     void Start()
     {
         totalObjects = bloomCount + bombCount;
         spawnedObjects = new GameObject[totalObjects];
-        // SpawnNewLevel();
     }
 
     public void SpawnNewLevel()

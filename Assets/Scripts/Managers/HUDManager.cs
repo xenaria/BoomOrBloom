@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UIElements;
 
 public class HUDManager : MonoBehaviour
 {
@@ -8,18 +9,17 @@ public class HUDManager : MonoBehaviour
         new Vector3(-553f, 438f, 0),
         new Vector3(0,48.036f,0)
     };
-    private Vector3[] restartButtonPosition = {
-        new Vector3(894f, 459f, 0),
-        new Vector3(0, -98f, 0)
-    };
 
     public GameObject scoreText;
     // public GameObject finalScoreText;
     // public GameObject highScoreText;
     public GameObject restartButton;
+    public GameObject currentModeText;
 
     public GameObject gameOverScreen;
     public GameObject gameWinScreen;
+    public GameObject pauseMenu;
+
     public GameManager gameManager;
 
     private RectTransform scoreTextRect;
@@ -39,6 +39,8 @@ public class HUDManager : MonoBehaviour
             gameManager.gameOver.AddListener(GameOver);
             gameManager.gameRestart.AddListener(GameStart);
             gameManager.scoreChange.AddListener(SetScore);
+            gameManager.gameModeChanged.AddListener(ChangeMode);
+            gameManager.gamePause.AddListener(GamePause);
         }
         else
         {
@@ -55,6 +57,8 @@ public class HUDManager : MonoBehaviour
             gameManager.gameOver.RemoveListener(GameOver);
             gameManager.gameRestart.RemoveListener(GameStart);
             gameManager.scoreChange.RemoveListener(SetScore);
+            gameManager.gameModeChanged.RemoveListener(ChangeMode);
+            gameManager.gamePause.RemoveListener(GamePause);
         }
     }
 
@@ -67,13 +71,12 @@ public class HUDManager : MonoBehaviour
         gameOverScreen.SetActive(false);
         
         scoreTextRect.anchoredPosition = scoreTextPosition[0];
-        restartButtonRect.anchoredPosition = restartButtonPosition[0];
     }
 
     public void SetScore(int score)
     {
         Debug.Log($"SetScore called with: {score}");
-        scoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + score.ToString();
+        scoreText.GetComponent<TextMeshProUGUI>().text = "Blooms Collected: " + score.ToString() + $"/{gameManager.levelData.totalBlooms.ToString()}";
     }
 
     public void GameWin()
@@ -82,8 +85,15 @@ public class HUDManager : MonoBehaviour
     }
     public void GameOver()
     {
-        // finalScoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + gameScore.Value.ToString();
-        // highScoreText.GetComponent<TextMeshProUGUI>().text = "High Score: " + gameScore.previousHighestValue.ToString();
         gameOverScreen.SetActive(true);
+    }
+    public void ChangeMode(string mode)
+    {
+        currentModeText.GetComponent<TextMeshProUGUI>().text = "Current mode: " + mode;
+    }
+
+    public void GamePause()
+    {
+        pauseMenu.SetActive(true);
     }
 }

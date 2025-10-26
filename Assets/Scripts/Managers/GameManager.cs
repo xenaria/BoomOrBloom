@@ -11,18 +11,20 @@ public class GameManager : MonoBehaviour
     public UnityEvent<int> scoreChange;
     public UnityEvent gameWin;
     public UnityEvent gameOver;
+    public UnityEvent gamePause;
+    public UnityEvent<string> gameModeChanged;
 
     public IntVariable gameScore;
     public LevelData levelData;
 
     bool IsNewSession = true;
+    bool isPaused = false;
     private int score = 0;
     
     public static GameManager Instance { get; private set; }
 
     public void Awake()
     {
-
         // SINGLETON :(
         if (Instance == null) Instance = this;
         else Destroy(gameObject); 
@@ -39,17 +41,49 @@ public class GameManager : MonoBehaviour
     {
         gameStart.Invoke();
         Time.timeScale = 1.0f;
+        Debug.Log($"Game Mode: {levelData.gameMode}");
+    }
+
+    public void ChooseNormalGameMode()
+    {
+        levelData.gameMode = LevelData.GameMode.Normal;
+        gameModeChanged.Invoke("Normal");
+        Debug.Log($"Game Mode: {levelData.gameMode}");
+    }
+    public void ChooseTwistGameMode()
+    {
+        levelData.gameMode = LevelData.GameMode.Twist;
+        gameModeChanged.Invoke("Twist");
+        Debug.Log($"Game Mode: {levelData.gameMode}");
     }
 
     public void GameRestart()
     {
         levelData.Reset();
-        // ResetScore();
-        // SetScore(score);
+
         score = 0;
+
         scoreChange?.Invoke(score);
         gameRestart.Invoke();
+        gameModeChanged.Invoke(levelData.gameMode.ToString());
+        // SoundManager.Instance.RestartMusic();
+
         Time.timeScale = 1.0f;
+    }
+
+    public void GamePause()
+    {
+        Time.timeScale = 0f;
+        isPaused = true;
+        // SoundManager.Instance.PauseMusic();
+        gamePause.Invoke();
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+        // SoundManager.Instance.ResumeMusic();
     }
 
     public void OnBloomCollected()
@@ -65,37 +99,20 @@ public class GameManager : MonoBehaviour
             GameWin();
     }
 
-
-
     private void GameWin()
     {
         levelData.Reset();
         Debug.Log("All blooms collected! You win!");
-        Time.timeScale = 0f; // optionally pause game
         gameWin?.Invoke();
-        // Add win UI, stop player movement, etc.
+        Time.timeScale = 0f;
     }
     
-    // public void IncreaseScore(int inc)
-    // {
-    //     SetScore(score + inc);
-    //     gameScore.ApplyChange(inc);
-    //     Debug.Log($"Added {inc} points to gameScore. \nCurrent gameScore: {gameScore.Value}");
-    // }
-
-    // public void SetScore(int newScore)
-    // {
-    //     score = Mathf.Max(0, newScore);
-    //     scoreChange?.Invoke(score);
-    // }
-
     public void GameOver()
     {
         Time.timeScale = 0.0f;
         gameOver.Invoke();
     }
 
-    
     public int CurrentScore => score;
     public void ResetScore()
     {
